@@ -6,7 +6,9 @@ var glob = require('glob');
 var mv = require('mv');
 var bodyParser = require('body-parser');
 
-
+var Router = require('router')
+ 
+var router = Router()
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './files/meet@gmail.com')
@@ -25,7 +27,7 @@ var upload = multer({storage:storage});
     console.log(req.file);
     res.status(204).end();
 });*/
-router.POST('/upload', upload.single('mypic'),function(req, res, next) {
+router.post('/upload', upload.single('mypic'),function(req, res, next) {
   /*console.log(req.body);
     console.log(req.file);
     res.status(204).end();*/

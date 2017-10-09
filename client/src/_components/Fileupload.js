@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import * as API from './api/API';
+import * as fileuploadservice from './_services/fileuploadservice';
 import ImageGridList from "./ImageGridList";
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
@@ -12,10 +12,10 @@ class Fileupload extends Component {
         const payload = new FormData();
         payload.append('mypic', event.target.files[0]);
         //console.log(payload.fieldName);
-        API.uploadFile(payload)
+        fileuploadservice.uploadFile(payload)
             .then((status) => {
                 if (status === 204) {
-                    API.getImages()
+                    fileuploadservice.getImages()
                         .then((data) => {
                             this.setState({
                                 images: data
@@ -33,7 +33,7 @@ class Fileupload extends Component {
     }
 
     componentDidMount() {
-        API.getImages()
+        fileuploadservice.getImages()
             .then((data) => {
                 console.log(data);
                 this.setState({

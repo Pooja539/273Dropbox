@@ -14,6 +14,7 @@ var express = require('express')
 
 var app = express();
 var cors = require('cors');
+var Router = require('router')
 // all environments
 app.use(cors());
 app.set('port', process.env.PORT || 3000);
@@ -25,8 +26,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // development only

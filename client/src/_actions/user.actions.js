@@ -21,7 +21,7 @@ function login(email, password) {
                     if(user.status==201)
                     {
                     dispatch(success(user));
-                    history.push('/fileupload');
+                    history.push('/homepage');
                     }
                 
                 else

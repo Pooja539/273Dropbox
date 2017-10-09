@@ -8,7 +8,7 @@ import { PrivateRoute } from './_components';
 import { HomePage } from './views/HomePage';
 import { LoginPage } from './views/LoginPage';
 import { RegisterPage } from './views/RegisterPage';
-import Fileupload from './views/Fileupload';
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -35,7 +35,6 @@ class App extends React.Component {
                                 <Route path="/login" component={LoginPage} />
                                 <Route path="/register" component={RegisterPage}/>
                                 <Route path="/homepage" component={HomePage}/>
-                                <Route path="/fileupload" component={Fileupload}/>
                             </div>
                         </Router>
                     </div>
