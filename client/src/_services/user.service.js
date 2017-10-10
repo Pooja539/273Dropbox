@@ -17,7 +17,7 @@ function login(email, password) {
         body: JSON.stringify({ email, password })
     };
 
-    return fetch('http://localhost:3000/authenticate', requestOptions)
+    return fetch('http://localhost:3001/authenticate', requestOptions)
        /* .then(response => {
             if (!response.ok) { 
                 return Promise.reject(response.statusText);
@@ -50,7 +50,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 console.log(requestOptions);
-    return fetch('http://localhost:3000/register', requestOptions).then(handleResponse);
+    return fetch('http://localhost:3001/register', requestOptions).then(handleResponse);
 }
 /*function logout() {
     // remove user from local storage to log user out

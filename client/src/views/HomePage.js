@@ -8,11 +8,11 @@ class HomePage extends React.Component {
     render() {
         return (
         <div class="container">
-        <div className="row">
+  
        
         <div className="col-md-6">
             <Fileupload/>
-        </div>
+        
         </div>
         </div>
         
@@ -21,5 +21,5 @@ class HomePage extends React.Component {
 }
 
 
-//const connectedHomePage = connect(mapStateToProps)(HomePage);
-//export { connectedHomePage as HomePage };
+
+export {HomePage as HomePage};

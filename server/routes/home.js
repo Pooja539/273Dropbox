@@ -88,15 +88,14 @@ function register(req,res)
 									}
 									else
 									{
-										fs.mkdir("./files/" + req.param("email"), function(err) {
+										fs.mkdir("./uploads/" + req.param("email"), function(err) {
 										if (!err) {
 										console.log("directory created");
-
-									} else {
+										} 
+										else {
 										return res.end("Dir creation failed : " + err);
-									}
-									});
-
+										}
+										});
 										console.log("pooja");
 										res.setHeader('Content-Type', 'application/json');
 										res.send(JSON.stringify({}));
