@@ -43,14 +43,26 @@ function login(email, password) {
 });
 }
 function register(user) {
-     console.log(user);
     const requestOptions = {
-        method: 'POST',
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-console.log(requestOptions);
     return fetch('http://localhost:3001/register', requestOptions).then(handleResponse);
+}
+
+function getuserdetails()
+{
+    fetch('http://localhost:3001/getuserdetails', {
+          method: 'GET', 
+          headers: {
+          'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({"op1":op1,"op2":op2})
+           }).then((response) => response.json()).then((responseJson) => {
+        //console.log("heyyy"+responseJson);
+        document.getElementById("result").innerHTML = responseJson.result;
+
 }
 /*function logout() {
     // remove user from local storage to log user out

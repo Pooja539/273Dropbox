@@ -20,3 +20,17 @@ export const uploadFile = (payload) =>
             console.log("This is error");
             return error;
         });
+
+export const listfiles= () =>
+fetch(`${api}/listfiles`, {
+        method: 'POST',
+       // body: payload
+    }).then((response) => response.json()).then((responseJson) => {
+        console.log("hii its response JSon"+ responseJson);
+                return responseJson;
+    //}).then(res => {
+        //return res.status;
+    }).catch(error => {
+            console.log("This is error");
+            return error;
+        });

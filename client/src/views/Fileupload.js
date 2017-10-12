@@ -21,20 +21,10 @@ class Fileupload extends React.Component {
 
     };
 
-    /*componentDidMount() {
-        fileuploadservice.getImages()
-            .then((data) => {
-                console.log(data);
-                this.setState({
-                    images: data
-                });
-            });
-    };*/
-
     render() {
         return (
             <div >
-            <img src={require('../Dropbox.png')} style={{width: 100, height: 100, align: 'left'}}/>
+            
                 <Typography
                     align={'center'}
                     type="display3"

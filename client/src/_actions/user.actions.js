@@ -2,6 +2,7 @@ import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
+import * as fileuploadservice from '../_services/fileuploadservice';
 
 export const userActions = {
     login,
@@ -9,6 +10,7 @@ export const userActions = {
     register,
     //getAll,
    // delete: _delete
+   //listfiles
 };
 
 function login(email, password) {
@@ -21,7 +23,7 @@ function login(email, password) {
                     if(user.status==201)
                     {
                     dispatch(success(user));
-                    history.push('/fileupload');
+                    history.push('/homepage');
                     }
                 
                 else
@@ -68,7 +70,22 @@ function register(user) {
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
+/*function listfiles()
+{
+            fileuploadservice.listfiles()
+            .then((reponseJson) => {
 
+               console.log("its Listfiles actions");
+               console.log(reponseJson);
+            },
+           
+            );
+
+    function request(responseJson) { return { type: userConstants.REGISTER_REQUEST, responseJson } }
+    function success(responseJson) { return { type: userConstants.REGISTER_SUCCESS, responseJson } }
+    function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+
+}*/
 
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {

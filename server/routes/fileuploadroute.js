@@ -8,7 +8,7 @@ var Router = require('router')
 var router = Router()
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/')
+        cb(null, './uploads/sal@yahoo.com')
     },
     filename: function (req, file, cb) {
         //cb(null, file.fieldname + '-' + Date.now())
@@ -19,21 +19,6 @@ var storage = multer.diskStorage({
 var upload = multer({storage:storage});
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-    var resArr = [];
-
-    glob("public/uploads/*", function (er, files) {
-        var resArr = files.map(function (file) {
-            var imgJSON = {};
-            imgJSON.img = 'uploads/'+file.split('/')[2];
-            imgJSON.cols = 2  ;
-            return imgJSON;
-        });
-        console.log(resArr);
-        res.status(200).send(resArr);
-    });
-
-});
 
 router.post('/upload', upload.single('mypic'), function (req, res, next) {
     

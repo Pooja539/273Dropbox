@@ -1,5 +1,5 @@
 import { userConstants } from '../_constants';
-
+console.log("in users reducer");
 export function users(state = {}, action) {
   switch (action.type) {
     case userConstants.GETALL_REQUEST:

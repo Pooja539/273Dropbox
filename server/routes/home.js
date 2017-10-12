@@ -4,6 +4,10 @@ var fs = require('fs');
 
 function authenticate(req,res)
 {
+	var email = req.param("email");
+	console.log(email);
+	req.session.email = email;
+	console.log("hey its auth" + req.session.email);
 	var checkUser="select * from users where email='"+req.param("email")+"' and password='" + req.param("password") +"'";
 	console.log("Query is:"+checkUser);
 	
@@ -108,5 +112,36 @@ function register(req,res)
 				},duplicateUser);
 }
 
+function getuserdetails(req,res)
+{
+	var getuser = "select * from users where email = '"+req.param("email")+"'";
+	console.log(getuser);
+	mysql.fetchData(function(err,results){
+		if(err){
+			throw err;
+		}
+		else 
+		{
+			if(results.length)
+			{
+				let user = results[0];
+				console.log(results);
+				let responseJson = ({
+				
+                           	email: user.email,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            password: user.password
+                      		
+                        });
+
+                console.log(responseJson);        
+				res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(responseJson));
+			}
+
+}
+
 exports.authenticate = authenticate;
-exports.register= register;					
+exports.register= register;			
+exports.getuserdetails = getuserdetails;		
