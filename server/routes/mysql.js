@@ -43,6 +43,23 @@ function addUser(callback,sqlQuery){
 	});
 	console.log("\nConnection closed..");
 	connection.end();
+}
+function starfile(callback,sqlQuery){
+	console.log("\nSQL Query::"+sqlQuery);
+	var connection=getConnection();
+	connection.query(sqlQuery, function(err, results, fields) {
+		if(err){
+			console.log("ERROR: " + err.message);
+		}
+		else 
+		{	// return err or result
+			console.log("File successfully starred");
+			callback(err);
+		}
+	});
+	console.log("\nConnection closed..");
+	connection.end();
 }	
 exports.fetchData=fetchData;
 exports.addUser=addUser;
+exports.starfile = starfile;

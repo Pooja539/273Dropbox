@@ -34,3 +34,14 @@ fetch(`${api}/listfiles`, {
             console.log("This is error");
             return error;
         });
+
+   export const starfile= (payload) =>
+   fetch(`${api}/listfiles/starfile`, {
+        method: 'POST',
+        body: payload
+    }).then(res => {
+        return res.status;
+    }).catch(error => {
+            console.log("This is error");
+            return error;
+        });

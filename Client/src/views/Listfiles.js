@@ -6,6 +6,8 @@ import * as fileuploadservice from '../_services/fileuploadservice';
 //import Typography from 'material-ui/Typography';
 import * as listfileaction from '../_actions/listfileaction';
 //import {SelectableList} from 'material-ui/SelectableList';
+import DownloadLink from 'react-download-link';
+import Navpage from './Navpage';
 
 class Listfiles extends React.Component {
     
@@ -23,32 +25,42 @@ class Listfiles extends React.Component {
 
 
     };*/
+    componentDidMount() {
+        this.props.addTodoNew()
+    }
+
+
     render() {
             const {item} = this.props;
             const { listoffiles  } = this.props;
         return (
-
             <div>
-            <br/>
-            <br/>
-
-            <button className="btn btn-primary" onClick={() => {
-                                this.props.addTodoNew()
-                            }}>My files</button>
-
+            <div class="row">
+            <div className="col-sm-6">
+            <Navpage/>
+            </div>
+            <div className="col-sm-6">
+            <h1> Your Files </h1>
             <div className="card-body">
                           
                 {this.props.fileList.length > 0 ? 
 
                     this.props.fileList.map((file) => {
 
-                        return ( <div> {file}</div>);
+                        return ( <div>
+                            <button onClick= ""><img src={require('../Star.png')}/></button> 
+                            <DownloadLink
+                                filename={file}
+                                label= {file}
+                                />
+                            </div>);
                     })
                     
                     : ''}
                 
-              
                  </div>
+                 </div>
+               </div>
                </div>
            
         );
@@ -72,3 +84,6 @@ function mapDispatchToProps(dispatch) {
     };
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Listfiles); 
+/*<button className="btn btn-primary" onClick={() => {
+                                this.props.addTodoNew()
+                            }}>My files</button>*/
