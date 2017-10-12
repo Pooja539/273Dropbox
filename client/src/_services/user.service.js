@@ -4,6 +4,7 @@ export const userService = {
     login,
    //logout,
     register,
+    getuserdetails
     /*getAll,
     getById,
     update,
@@ -25,21 +26,7 @@ function login(email, password) {
          
         .then((response) => response.json()).then((responseJson) => {
         console.log(responseJson);
-
-           
-                return responseJson;
-           
-            //return response.json();
-
-       
-        /*.then(user => {
-            // login successful if there's a jwt token in the response
-            if (user && user.token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-            }
-            
-        });*/
+    return responseJson;
 });
 }
 function register(user) {
@@ -53,42 +40,17 @@ function register(user) {
 
 function getuserdetails()
 {
-    fetch('http://localhost:3001/getuserdetails', {
-          method: 'GET', 
-          headers: {
-          'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({"op1":op1,"op2":op2})
-           }).then((response) => response.json()).then((responseJson) => {
-        //console.log("heyyy"+responseJson);
-        document.getElementById("result").innerHTML = responseJson.result;
-
+    fetch('http://localhost:3001/getuserdetails').then((response) => response.json()).then((responseJson) => {
+       console.log(responseJson);
+       return responseJson; 
+}
+)
 }
 /*function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
 }
 
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch('/users', requestOptions).then(handleResponse);
-}
-
-function getById(id) {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch('/users/' + _id, requestOptions).then(handleResponse);
-}
-*/
-
-/*
 function update(user) {
     const requestOptions = {
         method: 'PUT',
@@ -99,17 +61,9 @@ function update(user) {
     return fetch('/users/' + user.id, requestOptions).then(handleResponse);;
 }
 
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
-    const requestOptions = {
-        method: 'DELETE',
-        headers: authHeader()
-    };
-
-    return fetch('/users/' + id, requestOptions).then(handleResponse);;
-}
 */
-function handleResponse(response) {
+function handleResponse(response) 
+{
     if (!response.ok) { 
         return Promise.reject(response.statusText);
     }

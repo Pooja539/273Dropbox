@@ -10,6 +10,7 @@ import { LoginPage } from './views/LoginPage';
 import { RegisterPage } from './views/RegisterPage';
 import Fileupload from './views/Fileupload';
 import Listfiles from './views/Listfiles';
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -38,6 +39,7 @@ class App extends React.Component {
                                 <Route path="/homepage" component={HomePage}/>
                                 <Route path="/fileupload" component={Fileupload}/>
                                 <Route path="/Listfiles" component={Listfiles}/>
+                                
 
                             </div>
                         </Router>

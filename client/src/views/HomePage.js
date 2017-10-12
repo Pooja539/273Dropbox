@@ -18,9 +18,7 @@ class HomePage extends React.Component {
         <br/>
         <br/>
         <br/>
-         <div >
-            <Listfiles/>
-        </div>
+        
         </div>
         
     );

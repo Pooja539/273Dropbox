@@ -10,6 +10,7 @@ case LIST_FILES :
 
             if(action.files && action.files.length > 0) {
               console.log("pojja here");
+              console.log(action.files);
                 return {
 
                    ...state,
@@ -22,7 +23,7 @@ case LIST_FILES :
 
             }
             else {
-
+console.log("its else in reducer");
                 return {
                    ...state,                  
                     "files":{

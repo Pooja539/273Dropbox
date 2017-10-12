@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as fileuploadservice from '../_services/fileuploadservice';
 //import ImageGridList from "./ImageGridList";
-import TextField from 'material-ui/TextField';
-import Typography from 'material-ui/Typography';
+//import TextField from 'material-ui/TextField';
+//import Typography from 'material-ui/Typography';
 import * as listfileaction from '../_actions/listfileaction';
+//import {SelectableList} from 'material-ui/SelectableList';
 
 class Listfiles extends React.Component {
     
@@ -28,32 +29,43 @@ class Listfiles extends React.Component {
         return (
 
             <div>
-            
             <br/>
             <br/>
 
             <button className="btn btn-primary" onClick={() => {
                                 this.props.addTodoNew()
                             }}>My files</button>
+
             <div className="card-body">
-                            {
-                               // this.props.listoffiles.listoffiles;
-                            }
-                 
+                          
+                {this.props.fileList.length > 0 ? 
+
+                    this.props.fileList.map((file) => {
+
+                        return ( <div> {file}</div>);
+                    })
+                    
+                    : ''}
+                
+              
+                 </div>
                </div>
-            
-         
-            </div>
+           
         );
     }
 }
 
-function mapStateToProps(listoffiles) {
-
-    console.log("in component");
-    console.log(listoffiles);
-    
+function mapStateToProps(data) {
+    let fileList = [];
+    console.log("in component ----- ");
+    if(data.listoffiles.files !== undefined) {
+        fileList = data.listoffiles.files.files;
+        console.log(data.listoffiles.files.files);  
+        
+    }
+    return {fileList};
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         addTodoNew : () => dispatch(listfileaction.listfiles())
