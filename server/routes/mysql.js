@@ -44,7 +44,7 @@ function addUser(callback,sqlQuery){
 	console.log("\nConnection closed..");
 	connection.end();
 }
-function starfile(callback,sqlQuery){
+function starfilesql(callback,sqlQuery){
 	console.log("\nSQL Query::"+sqlQuery);
 	var connection=getConnection();
 	connection.query(sqlQuery, function(err, results, fields) {
@@ -62,4 +62,4 @@ function starfile(callback,sqlQuery){
 }	
 exports.fetchData=fetchData;
 exports.addUser=addUser;
-exports.starfile = starfile;
+exports.starfilesql = starfilesql;

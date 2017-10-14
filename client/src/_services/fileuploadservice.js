@@ -13,6 +13,8 @@ export const uploadFile = (payload) =>
 //console.log(uploadFiles);
     fetch(`${api}/files/upload`, {
         method: 'POST',
+        credentials:'include',
+        mode:'cors',
         body: payload
     }).then(res => {
         return res.status;
@@ -24,6 +26,8 @@ export const uploadFile = (payload) =>
 export const listfiles= () =>
 fetch(`${api}/listfiles`, {
         method: 'POST',
+        credentials:'include',
+        mode:'cors'
        // body: payload
     }).then((response) => response.json()).then((responseJson) => {
         console.log("hii its response JSon"+ responseJson);
@@ -35,9 +39,23 @@ fetch(`${api}/listfiles`, {
             return error;
         });
 
-   export const starfile= (payload) =>
-   fetch(`${api}/listfiles/starfile`, {
+   export const starfile = (payload) =>
+   fetch(`${api}/starfile`, {
         method: 'POST',
+        credentials:'include',
+        mode:'cors',
+        body: payload
+    }).then(res => {
+        return res.status;
+    }).catch(error => {
+            console.log("This is error");
+            return error;
+        });
+export const sharefile = (payload) =>
+   fetch(`${api}/sharefile`, {
+        method: 'POST',
+        credentials:'include',
+        mode:'cors',
         body: payload
     }).then(res => {
         return res.status;

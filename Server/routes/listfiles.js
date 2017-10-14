@@ -1,13 +1,11 @@
 var fs = require('fs');
 var ejs = require('ejs');
-var testFolder = './uploads/sal@yahoo.com';
+var testFolder = './uploads/';
 var mysql = require('mysql');
 function listfiles(req,res)
 {
 				var response = "";
-				console.log("hii"+ req.session.email);
-				//testFolder+= "sal@yahoo.com";
-				console.log(testFolder);
+				testFolder += req.session.email;
 				fs.readdir(testFolder, function (err, files) 
 				{
 					console.log(files.length);
@@ -18,12 +16,14 @@ function listfiles(req,res)
 					res.send(JSON.stringify(responseJson));
 				});
 }
-
+ 
 function starfile(req,res)
 {
 	var star = true;
-	var starfilequery = "INSERT into files(star) VALUES('"+star+"') where filename='"+req.param("filename")+"'";
-		mysql.starfilequery(function(err)
+	console.log(req.param("file"));
+	var starfilequery = "INSERT into files(star) VALUES('"+star+"') where filename='"+req.param("file")+"'";
+	console.log(starfilequery);
+		mysql.starfilesql(function(err)
                    	{
 						if(err)
 						{
@@ -31,8 +31,12 @@ function starfile(req,res)
 						}
 						else 
 						{
-							res.send(JSON.stringify("starred"));
+							let responseJson = ({
+								status: 201
+							})
+							res.send(JSON.stringify(responseJson));
 						}
-					}		
+					},starfilequery);		
 }
 exports.listfiles = listfiles;
+exports.starfile = starfile;

@@ -14,6 +14,8 @@ export const userService = {
 function login(email, password) {
     const requestOptions = {
         method: 'POST',
+        credentials:'include',
+        mode:'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
     };
@@ -31,7 +33,9 @@ function login(email, password) {
 }
 function register(user) {
     const requestOptions = {
-        method: 'GET',
+        method: 'POST',
+       // credentials:'include',
+       // mod:'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };

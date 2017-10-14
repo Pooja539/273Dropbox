@@ -7,7 +7,7 @@ function authenticate(req,res)
 	var email = req.param("email");
 	console.log(email);
 	req.session.email = email;
-	console.log("hey its auth" + req.session.email);
+	console.log("hey its auth " + req.session.email);
 	var checkUser="select * from users where email='"+req.param("email")+"' and password='" + req.param("password") +"'";
 	console.log("Query is:"+checkUser);
 	
@@ -64,16 +64,18 @@ function register(req,res)
                     // get new user object from post body
                     //let newUser = JSON.parse(opts.body);
                     
-                   	var duplicateUser = "select * from users where email = '"+req.param("email")+"'";
-                   	console.log("Duplicate user query is" + duplicateUser);
-                   	mysql.fetchData(function(err)
-                   	{
-						if(err)
+                   //	var duplicateUser = "select * from users where email = '"+req.param("email")+"'";
+                   //	console.log("Duplicate user query is" + duplicateUser);
+
+                   	console.log(req.sessionID);
+                   //	mysql.fetchData(function(err)
+                   	//{
+						/*if(err)
 						{
 							throw err;
 						}
 						else 
-						{
+						{*/
 								/*if(duplicateUser)
 								{
 									reject('Email "' + req.param("email") + '" already taken');
@@ -108,8 +110,8 @@ function register(req,res)
 								},addUser);
                    				//}
 
-					}
-				},duplicateUser);
+					//}
+				//},duplicateUser);
 }
 
 function getuserdetails(req,res)

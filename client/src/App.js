@@ -10,7 +10,9 @@ import { LoginPage } from './views/LoginPage';
 import { RegisterPage } from './views/RegisterPage';
 import Fileupload from './views/Fileupload';
 import Listfiles from './views/Listfiles';
+
 import Navpage from './views/Navpage';
+import Fileshare from './views/Fileshare';
 
 class App extends React.Component {
     constructor(props) {
@@ -41,7 +43,7 @@ class App extends React.Component {
                                 <Route path="/fileupload" component={Fileupload}/>
                                 <Route path="/Listfiles" component={Listfiles}/>
                                 <Route path="/Navpage" component={Navpage}/>
-
+                                <Route path="/Fileshare" component={Fileshare}/>
                             </div>
                         </Router>
                     </div>

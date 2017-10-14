@@ -26,11 +26,12 @@ class Fileupload extends React.Component {
             });
 
     };
-    handleSubmit = (event) =>{
-       // const payload = {file};
+    handleStar(file){
+       const payload = file;
+       console.log(payload);
         console.log("inside handleSubmit for starfile");
         //console.log(payload.fieldName);
-        fileuploadservice.starfile()
+        fileuploadservice.starfile(payload)
             .then((status) => {
                 if (status === 204) {
                     console.log("file starred in Listfiles.js");
@@ -38,15 +39,16 @@ class Fileupload extends React.Component {
                 }
             });
     };
+    handleShare(file){
+        //history.push(./Fileshare);
+    }
 
     render() {
         return (
             <div >
                 
                  <div class="row">
-                <div className="col-sm-6">
-                <Navpage/>
-                </div>
+                
                  <div className="col-sm-6">
                  <h1> Upload your files here </h1>
                 
@@ -59,15 +61,14 @@ class Fileupload extends React.Component {
                   <div className="card-body">
                           
                 {this.props.fileList.length > 0 ? 
-
                     this.props.fileList.map((file) => {
-
                         return ( <div>
-                        <button onClick= "{this.handleSubmit}"><img src={require('../Star.png')}/></button> 
+                        <button onClick= {()=>this.handleStar(file)}><img src={require('../Star.png')}/></button> 
                             <DownloadLink
                                 filename={file}
                                 label= {file}
                                 />
+                        <button onClick= {()=>this.handleShare(file)}>Share</button>  
                                 <br/>
                         </div>);
                     })
