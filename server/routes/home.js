@@ -1,6 +1,7 @@
 var ejs = require("ejs");
 var mysql = require('./mysql');
 var fs = require('fs');
+var passwordHash = require('password-hash');
 
 function authenticate(req,res)
 {
@@ -8,9 +9,13 @@ function authenticate(req,res)
 	console.log(email);
 	req.session.email = email;
 	console.log("hey its auth " + req.session.email);
-	var checkUser="select * from users where email='"+req.param("email")+"' and password='" + req.param("password") +"'";
-	console.log("Query is:"+checkUser);
 	
+	//var password =req.param("password");
+    //var hashedPassword = passwordHash.generate(req.param("password"));
+    //console.log(hashedPassword);
+    //console.log(passwordHash.verify('password123', hashedPassword)); // true
+	var checkUser="select * from users where email='"+req.param("email")+"' and password='"+req.param("password")+"'";
+	console.log("Query is:"+checkUser);
 	mysql.fetchData(function(err,results){
 		if(err){
 			throw err;
@@ -19,7 +24,15 @@ function authenticate(req,res)
 		{
 			if(results.length)
 			{
+
 				let user = results[0];
+				//console.log(user.password);
+				//var hashedPassword = user.password;
+				//var hashedPass = passwordHash.generate(req.param("password"));
+				//console.log(hashedPass);
+				//console.log(passwordHash.verify(password, hashedPassword));
+				//if(passwordHash.verify(password, hashedPassword))
+				//{
 				console.log("hey its results"+results[0]);
 				let responseJson = ({
 					status: 201,
@@ -33,6 +46,7 @@ function authenticate(req,res)
                 console.log(responseJson);        
 				res.setHeader('Content-Type', 'application/json');
 				res.send(JSON.stringify(responseJson));
+			//}
 			}
 			else 
 			{    
@@ -84,7 +98,10 @@ function register(req,res)
                    				//else
 
                    				//{
-                   					var addUser= "INSERT INTO users(firstName,lastName,email,password) VALUES ('"+req.param("firstName")+"','"+req.param("lastName")+"','"+req.param("email")+"','"+req.param("password")+"')";
+                   					var passwordHash = require('password-hash');
+    								var hashedPassword = passwordHash.generate(req.param("password"));
+    								console.log(hashedPassword);
+                   					var addUser= "INSERT INTO users(firstName,lastName,email,password) VALUES ('"+req.param("firstName")+"','"+req.param("lastName")+"','"+req.param("email")+"','"+hashedPassword+"')";
                    					console.log("query is"+addUser);
                    					
 									mysql.addUser(function(err){

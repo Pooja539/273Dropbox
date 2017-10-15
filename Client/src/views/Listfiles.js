@@ -29,12 +29,9 @@ class Listfiles extends React.Component {
             <Navpage/>
             </div>
             <div className="col-sm-6">
-            <h1> Your Files </h1>
             <div className="card-body">         
                 {this.props.fileList.length > 0 ? 
-
                     this.props.fileList.map((file) => {
-
                         return ( <div>
                             <button onClick= ""><img src={require('../Star.png')}/></button> 
                             <DownloadLink

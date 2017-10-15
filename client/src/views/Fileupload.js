@@ -49,24 +49,16 @@ class Fileupload extends React.Component {
 
     render() {
         return (
-            <div >
+            <div style={{backgroundColor: 'powderblue',width:700,flex: 1, flexDirection: 'row'}}>
                 
-                 <div class="row">
-                <div className="col-sm-2">
+             <div className="row" style={{backgroundColor: 'powderblue',width:700}}>
+                <div className="col-sm-5">
             <Navpage/>
             </div>
-            <div className="col-sm-2">
-            
-            </div>
-            <div className="col-sm-2">
-            
-            </div>
-            
-            <div className="col-sm-2">
            
-            </div>
-                 <div className="col-sm-2">
-                 <h1> Upload your files here </h1>
+
+                 <div className="col-sm-3">
+                <h2> <b> Upload your files here </b></h2>
                 
                 <input
                     className={'fileupload'}
@@ -93,7 +85,10 @@ class Fileupload extends React.Component {
                 
               </div>
               </div>
-                 </div>
+              <div className="col-sm-4">
+              <img src={require('../userimage.jpg')} style={{width: 100, height: 100, alignment:"right"}}/>
+              </div>
+            </div>
             </div>
 
         );

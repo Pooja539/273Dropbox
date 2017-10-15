@@ -48,7 +48,14 @@ class RegisterPage extends React.Component {
         const { registering  } = this.props;
         const { user, submitted } = this.state;
         return (
-            <div className="col-md-6 col-md-offset-3">
+            <div>
+            <div className="col-md-3">
+            <img src={require('../Dropbox.png')} style={{width: 100, height: 100, align: 'left'}}/><h1> Dropbox </h1>
+            <img src={require('../DropboxMain.png')} style={{width: 350, height: 300, align: 'left'}}/>
+            </div>
+            <div className="col-md-3">
+            </div>
+            <div className="col-md-6">
                 <h2>Register</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !user.firstName ? ' has-error' : '')}>
@@ -87,6 +94,7 @@ class RegisterPage extends React.Component {
                         <Link to="/login" className="btn btn-link">Login</Link>
                     </div>
                 </form>
+            </div>
             </div>
         );
     }

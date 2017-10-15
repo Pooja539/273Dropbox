@@ -21,7 +21,6 @@ var storage = multer.diskStorage({
 var upload = multer({storage:storage});
 
 /* GET users listing. */
-
 router.post('/upload', upload.single('mypic'), function (req, res, next) {
   
   var fileName = req.file.filename;
