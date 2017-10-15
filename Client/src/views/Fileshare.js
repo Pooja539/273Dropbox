@@ -50,8 +50,10 @@ render() {
         	<h4> File to be shared: </h4><textarea value={this.props.sharedfilename}/> <br/>
         	<button className="btn btn-primary" onClick= {()=>this.handleShare()}>Share</button>
    			</div>
-            </div>
+            <div className =" col-sm-6">
             <Logout/>
+            </div>
+            </div>
             </div>
 
    );

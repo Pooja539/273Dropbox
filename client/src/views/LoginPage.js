@@ -41,7 +41,7 @@ class LoginPage extends React.Component {
         const { loggingIn } = this.props;
         const { email, password, submitted } = this.state;
         return (
-            <div>
+            <div id="background" style={{backgroundColor: 'powderblue',height:600,width:800}}>
             <div className="col-md-3">
             <img src={require('../Dropbox.png')} style={{width: 100, height: 100, align: 'left'}}/><h1> Dropbox </h1>
             <img src={require('../DropboxMain.png')} style={{width: 350, height: 300, align: 'left'}}/>

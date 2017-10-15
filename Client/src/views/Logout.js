@@ -13,7 +13,7 @@ handleLogout(){
     render() {
         return (
             <div>
-            <button bsStyle="warning" onClick= {()=>this.handleLogout()}>Logout</button>
+            <button className="btn btn-primary" onClick= {()=>this.handleLogout()}>Logout</button>
         	</div>
 );
         }

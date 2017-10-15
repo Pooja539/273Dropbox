@@ -72,12 +72,8 @@ class Fileupload extends React.Component {
                 {this.props.fileList.length > 0 ? 
                     this.props.fileList.map((file) => {
                         return ( <div>
-                        <button onClick= {()=>this.handleStar(file)}><img src={require('../Star.png')}/></button> 
-                            <DownloadLink
-                                filename={file}
-                                label= {file}
-                                />
-                        <button onClick= {()=>this.handleShare(file)}>Share</button>  
+                        <button className="btn btn-primary" onClick= {()=>this.handleStar(file)}><img src={require('../Star.png')}/></button> 
+                        <DownloadLink filename={file} label= {file}/><button className="btn btn-primary" onClick= {()=>this.handleShare(file)}>Share</button>  
                                 <br/>
                         </div>);
                     })

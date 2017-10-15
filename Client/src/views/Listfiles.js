@@ -29,12 +29,12 @@ class Listfiles extends React.Component {
             <div className="col-sm-6">
             <Navpage/>
             </div>
-            <div className="col-sm-6">
+            <div className="col-sm-4">
             <div className="card-body">         
                 {this.props.fileList.length > 0 ? 
                     this.props.fileList.map((file) => {
                         return ( <div>
-                            <button onClick= ""><img src={require('../Star.png')}/></button> 
+                            <button className="btn btn-primary" onClick= ""><img src={require('../Star.png')}/></button> 
                             <DownloadLink
                                 filename={file}
                                 label= {file}
@@ -48,7 +48,8 @@ class Listfiles extends React.Component {
                  </div>
                  </div>
                </div>
-                <Logout/>
+               {this.props.fileList.length > 0 ? 
+                <Logout/> : '' }
                </div>
            
         );
