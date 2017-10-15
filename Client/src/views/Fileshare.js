@@ -4,6 +4,8 @@ import * as fileuploadservice from '../_services/fileuploadservice';
 import { history } from '../_helpers';
 //import { listfileAction } from '../_actions';
 import * as listfileaction from '../_actions/listfileaction';
+import Navpage from './Navpage';
+import Logout from './Logout';
 class Fileshare extends React.Component {
 constructor(props) {
         super(props);
@@ -38,11 +40,19 @@ render() {
 	const { sharing_email} = this.state;
         return (
         	<div>
+            <div class="row">
+            <div className="col-sm-6">
+            <Navpage/>
+            </div>
+            <div className="col-sm-6"> 
         	<h4> Share with: </h4>
-        	<input type="email" placeholder="Enter email here" className="mm-popup__input" name="sharing_email" value={sharing_email} onChange={this.handleChange}/>;
-        	<h4> File: </h4><input type="text" value={this.props.sharedfilename}/>;
+        	<input type="email" placeholder="Enter email here" className="mm-popup__input" name="sharing_email" value={sharing_email} onChange={this.handleChange}/>
+        	<h4> File to be shared: </h4><textarea value={this.props.sharedfilename}/> <br/>
         	<button className="btn btn-primary" onClick= {()=>this.handleShare()}>Share</button>
    			</div>
+            </div>
+            <Logout/>
+            </div>
 
    );
 }

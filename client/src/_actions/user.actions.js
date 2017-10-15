@@ -6,7 +6,7 @@ import * as fileuploadservice from '../_services/fileuploadservice';
 
 export const userActions = {
     login,
-   // logout,
+   logout,
     register,
     //getAll,
    // delete: _delete
@@ -41,10 +41,10 @@ function login(email, password) {
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
 
-/*function logout() {
+function logout() {
     userService.logout();
     return { type: userConstants.LOGOUT };
-}*/
+}
 
 function register(user) {
      console.log(user);
@@ -88,7 +88,7 @@ function register(user) {
 }*/
 
 // prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
+/*function _delete(id) {
     return dispatch => {
         dispatch(request(id));
 
@@ -106,4 +106,4 @@ function _delete(id) {
     function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
     function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
     function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
-}
+}*/

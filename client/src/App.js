@@ -10,7 +10,7 @@ import { LoginPage } from './views/LoginPage';
 import { RegisterPage } from './views/RegisterPage';
 import Fileupload from './views/Fileupload';
 import Listfiles from './views/Listfiles';
-
+import Logout from './views/Logout';
 import Navpage from './views/Navpage';
 import Fileshare from './views/Fileshare';
 
@@ -44,6 +44,7 @@ class App extends React.Component {
                                 <Route path="/Listfiles" component={Listfiles}/>
                                 <Route path="/Navpage" component={Navpage}/>
                                 <Route path="/Fileshare" component={Fileshare}/>
+                                <Route path="/Logout" component={Logout}/>
                             </div>
                         </Router>
                     </div>

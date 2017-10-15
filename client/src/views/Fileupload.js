@@ -9,6 +9,7 @@ import DownloadLink from 'react-download-link';
 //import Typography from 'material-ui/Typography';
 import Navpage from './Navpage';
 import { history } from '../_helpers';
+import Logout from './Logout';
 
 class Fileupload extends React.Component {
 
@@ -49,7 +50,7 @@ class Fileupload extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: 'powderblue',width:700,flex: 1, flexDirection: 'row'}}>
+            <div style={{backgroundColor: 'powderblue',height:300}}>
                 
              <div className="row" style={{backgroundColor: 'powderblue',width:700}}>
                 <div className="col-sm-5">
@@ -86,8 +87,10 @@ class Fileupload extends React.Component {
               </div>
               </div>
               <div className="col-sm-4">
-              <img src={require('../userimage.jpg')} style={{width: 100, height: 100, alignment:"right"}}/>
+              <img src={require('../userimage.jpg')} style={{width: 100, height: 100, alignment:"right"}}/><br/>
+              <Logout/>
               </div>
+
             </div>
             </div>
 

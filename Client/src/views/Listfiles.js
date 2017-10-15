@@ -8,6 +8,7 @@ import * as listfileaction from '../_actions/listfileaction';
 //import {SelectableList} from 'material-ui/SelectableList';
 import DownloadLink from 'react-download-link';
 import Navpage from './Navpage';
+import Logout from './Logout';
 
 class Listfiles extends React.Component {
     
@@ -23,7 +24,7 @@ class Listfiles extends React.Component {
             const {item} = this.props;
             const { listoffiles  } = this.props;
         return (
-            <div>
+            <div style={{backgroundColor: 'powderblue',height:500}}>
             <div class="row">
             <div className="col-sm-6">
             <Navpage/>
@@ -47,6 +48,7 @@ class Listfiles extends React.Component {
                  </div>
                  </div>
                </div>
+                <Logout/>
                </div>
            
         );

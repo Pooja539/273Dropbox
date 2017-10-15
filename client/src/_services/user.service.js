@@ -1,10 +1,10 @@
 import { authHeader } from '../_helpers';
-
+import { history } from '../_helpers';
 export const userService = {
     login,
-   //logout,
+   logout,
     register,
-    getuserdetails
+    //getuserdetails
     /*getAll,
     getById,
     update,
@@ -42,20 +42,19 @@ function register(user) {
     return fetch('http://localhost:3001/register', requestOptions).then(handleResponse);
 }
 
-function getuserdetails()
+/*function getuserdetails()
 {
     fetch('http://localhost:3001/getuserdetails').then((response) => response.json()).then((responseJson) => {
        console.log(responseJson);
        return responseJson; 
 }
 )
-}
-/*function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
+}*/
+function logout() {
+    history.push('/login');
 }
 
-function update(user) {
+/*function update(user) {
     const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
