@@ -9,8 +9,9 @@ export const getImages = () =>
             return error;
         });
 
-export const uploadFile = (payload) =>
+export const uploadFile = (payload,mypic) =>
 //console.log(uploadFiles);
+
     fetch(`${api}/files/upload`, {
         method: 'POST',
         credentials:'include',
@@ -51,14 +52,15 @@ fetch(`${api}/listfiles`, {
             console.log("This is error");
             return error;
         });
-export const sharefile = (payload) =>
+export const sharefile = (payload,sharing_email) =>
    fetch(`${api}/sharefile`, {
         method: 'POST',
         credentials:'include',
         mode:'cors',
-        body: payload
-    }).then(res => {
-        return res.status;
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ payload,sharing_email})
+    }).then((response) => response.json()).then((responseJson) => {
+                return responseJson;
     }).catch(error => {
             console.log("This is error");
             return error;

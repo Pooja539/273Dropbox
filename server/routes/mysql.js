@@ -44,16 +44,16 @@ function addUser(callback,sqlQuery){
 	console.log("\nConnection closed..");
 	connection.end();
 }
-function starfilesql(callback,sqlQuery){
+function filesql(callback,sqlQuery){
 	console.log("\nSQL Query::"+sqlQuery);
 	var connection=getConnection();
-	connection.query(sqlQuery, function(err, results, fields) {
+	connection.query(sqlQuery, function(err) {
 		if(err){
 			console.log("ERROR: " + err.message);
 		}
 		else 
 		{	// return err or result
-			console.log("File successfully starred");
+			console.log("File successfully added in db");
 			callback(err);
 		}
 	});
@@ -62,4 +62,4 @@ function starfilesql(callback,sqlQuery){
 }	
 exports.fetchData=fetchData;
 exports.addUser=addUser;
-exports.starfilesql = starfilesql;
+exports.filesql = filesql;

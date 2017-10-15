@@ -11,20 +11,10 @@ class HomePage extends React.Component {
         return (
             <div>
             
-    <div class="row">
-    <div className="col-sm-6">
-    
-      <Navpage/>
-
-    </div>
-    <div className="col-sm-6">
     
        <Fileupload/>
  
-    </div>
-
-
-        </div>
+    
         </div>
         
     );

@@ -8,6 +8,7 @@ import DownloadLink from 'react-download-link';
 //import TextField from 'material-ui/TextField';
 //import Typography from 'material-ui/Typography';
 import Navpage from './Navpage';
+import { history } from '../_helpers';
 
 class Fileupload extends React.Component {
 
@@ -16,7 +17,7 @@ class Fileupload extends React.Component {
         const payload = new FormData();
         payload.append('mypic', event.target.files[0]);
         console.log("inside handleUpoad");
-        //console.log(payload.fieldName);
+        console.log(payload);
         fileuploadservice.uploadFile(payload)
             .then((status) => {
                 if (status === 204) {
@@ -40,7 +41,10 @@ class Fileupload extends React.Component {
             });
     };
     handleShare(file){
-        //history.push(./Fileshare);
+        console.log(file);
+        console.log("hey its handleShare in Fileupload");
+        this.props.sharefileaction(file);
+        history.push('/Fileshare');
     }
 
     render() {
@@ -48,8 +52,20 @@ class Fileupload extends React.Component {
             <div >
                 
                  <div class="row">
-                
-                 <div className="col-sm-6">
+                <div className="col-sm-2">
+            <Navpage/>
+            </div>
+            <div className="col-sm-2">
+            
+            </div>
+            <div className="col-sm-2">
+            
+            </div>
+            
+            <div className="col-sm-2">
+           
+            </div>
+                 <div className="col-sm-2">
                  <h1> Upload your files here </h1>
                 
                 <input
@@ -85,7 +101,6 @@ class Fileupload extends React.Component {
 }
 function mapStateToProps(data) {
     let fileList = [];
-    console.log("in component ----- ");
     if(data.listoffiles.files !== undefined) {
         fileList = data.listoffiles.files.files;
         console.log(data.listoffiles.files.files);  
@@ -95,7 +110,8 @@ function mapStateToProps(data) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        addTodoNew : () => dispatch(listfileaction.listfiles())
+        addTodoNew : () => dispatch(listfileaction.listfiles()),
+        sharefileaction:(data) => dispatch(listfileaction.sharefileaction(data))
     };
 }
 

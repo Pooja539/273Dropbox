@@ -20,7 +20,7 @@ function authenticate(req,res)
 			if(results.length)
 			{
 				let user = results[0];
-				console.log(results);
+				console.log("hey its results"+results[0]);
 				let responseJson = ({
 					status: 201,
                             user : {email: user.email,

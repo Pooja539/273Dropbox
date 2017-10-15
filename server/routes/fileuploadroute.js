@@ -4,6 +4,8 @@ var router = express.Router();
 var multer = require('multer');
 var glob = require('glob');
 var mv = require('mv');
+var mysql = require('./mysql');
+
 var Router = require('router')
 var router = Router()
 var storage = multer.diskStorage({
@@ -21,8 +23,24 @@ var upload = multer({storage:storage});
 /* GET users listing. */
 
 router.post('/upload', upload.single('mypic'), function (req, res, next) {
-  console.log(req.sessionID);
-  console.log("hey its auth" + req.session.email);
+  
+  var fileName = req.file.filename;
+  var filePath= './uploads/'+req.session.email+'/'+req.file.filename;
+  var addUser= "INSERT INTO files(fileName,filePath,star,email) VALUES ('"+fileName+"','"+filePath+"','"+"false"+"','"+req.session.email+"')";
+  console.log("query is"+addUser);
+      mysql.addUser(function(err){
+                  if(err)
+                  {
+                    throw err;
+                  }
+                  else
+                  {
+                    
+                    console.log("file stored in db");
+                    res.end("file inserted");
+  
+                  }
+                },addUser);
        //console.log(req.uploads);
        /* mv("./uploads/" + req.uploads[0].filename, "./uploads/" +"kena@gmail.com"+ "/"
                 + req.uploads[0].filename, function(err) {
@@ -31,10 +49,8 @@ router.post('/upload', upload.single('mypic'), function (req, res, next) {
                 console.log(err);
             }
         });*/
-        //res.end("File is uploaded at : " + "pooja" + "/"
-               // + req.uploads[0].filename);
+       
                res.status(204).end();
-        //res.end (
 });
 
 

@@ -14,17 +14,6 @@ class Listfiles extends React.Component {
     constructor(props) {
         super(props);
     }
-    /*Listfiles = (event) => {
-
-        //const payload = new FormData();
-        //payload.append('mypic', event.target.files[0]);
-        console.log("inside listfiles");
-        //console.log(payload.fieldName);
-         const { dispatch } = this.props;
-       listfileaction.listfiles();
-
-
-    };*/
     componentDidMount() {
         this.props.addTodoNew()
     }
@@ -41,8 +30,7 @@ class Listfiles extends React.Component {
             </div>
             <div className="col-sm-6">
             <h1> Your Files </h1>
-            <div className="card-body">
-                          
+            <div className="card-body">         
                 {this.props.fileList.length > 0 ? 
 
                     this.props.fileList.map((file) => {
@@ -56,8 +44,9 @@ class Listfiles extends React.Component {
                             </div>);
                     })
                     
-                    : ''}
-                
+                    : <div><h1>You are Not logged In</h1></div>
+
+                }
                  </div>
                  </div>
                </div>
