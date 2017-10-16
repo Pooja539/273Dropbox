@@ -56,4 +56,14 @@ export function sendfileforshare(payload, sharing_email) {
       sharedfiledetails: {sharedfilename: responseJson.payload, shared_email: responseJson.sharing_email}
     }
   }  
+  export function deletefile(file){
+    return function(dispatch){
+  fileuploadservice.deletefile(file)
+            .then((responseJson) => {
+               console.log(responseJson);
+                dispatch(updateListFiles(responseJson));
+            },
+           
+            );}
+  }
 

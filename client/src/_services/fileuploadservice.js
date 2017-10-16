@@ -65,3 +65,17 @@ export const sharefile = (payload,sharing_email) =>
             console.log("This is error");
             return error;
         });
+
+    export const deletefile= (file)=>
+    fetch(`${api}/deletefile`, {
+        method: 'POST',
+        credentials:'include',
+        mode:'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ file})
+    }).then((response) => response.json()).then((responseJson) => {
+                return responseJson;
+    }).catch(error => {
+            console.log("This is error");
+            return error;
+        });

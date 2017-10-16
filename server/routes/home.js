@@ -1,7 +1,8 @@
 var ejs = require("ejs");
 var mysql = require('./mysql');
 var fs = require('fs');
-var passwordHash = require('password-hash');
+var bcrypt = require('bcrypt');
+var salt = bcrypt.genSaltSync(10);
 
 function authenticate(req,res)
 {
@@ -9,12 +10,7 @@ function authenticate(req,res)
 	console.log(email);
 	req.session.email = email;
 	console.log("hey its auth " + req.session.email);
-	
-	//var password =req.param("password");
-    //var hashedPassword = passwordHash.generate(req.param("password"));
-    //console.log(hashedPassword);
-    //console.log(passwordHash.verify('password123', hashedPassword)); // true
-	var checkUser="select * from users where email='"+req.param("email")+"' and password='"+req.param("password")+"'";
+	var checkUser="select * from users where email='"+req.param("email")+"'";
 	console.log("Query is:"+checkUser);
 	mysql.fetchData(function(err,results){
 		if(err){
@@ -22,24 +18,16 @@ function authenticate(req,res)
 		}
 		else 
 		{
-			if(results.length)
+		
+			if(results.length && bcrypt.compare(req.param("password"),results[0].password)) 
 			{
-
 				let user = results[0];
-				//console.log(user.password);
-				//var hashedPassword = user.password;
-				//var hashedPass = passwordHash.generate(req.param("password"));
-				//console.log(hashedPass);
-				//console.log(passwordHash.verify(password, hashedPassword));
-				//if(passwordHash.verify(password, hashedPassword))
-				//{
 				console.log("hey its results"+results[0]);
 				let responseJson = ({
 					status: 201,
                             user : {email: user.email,
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            
                             token: 'fake-jwt-token'}
                         });
 
@@ -58,13 +46,6 @@ function authenticate(req,res)
 				console.log("Invalid Login");       
 				res.setHeader('Content-Type', 'application/json');
 				res.send(JSON.stringify(responseJson));
-				
-				/*let responseJson={
-					status: 'invalid'
-				};
-				console.log(responseJson);
-				res.setHeader('Content-Type', 'application/json');
-				res.send(JSON.stringify({responseJson}));*/
 			}
 		}  
 	},checkUser);
@@ -72,7 +53,7 @@ function authenticate(req,res)
 
 
 }
-//if (url.endsWith('/users/register') && opts.method === 'POST')
+
 function register(req,res) 
 {
                     // get new user object from post body
@@ -98,12 +79,9 @@ function register(req,res)
                    				//else
 
                    				//{
-                   					var passwordHash = require('password-hash');
-    								var hashedPassword = passwordHash.generate(req.param("password"));
-    								console.log(hashedPassword);
-                   					var addUser= "INSERT INTO users(firstName,lastName,email,password) VALUES ('"+req.param("firstName")+"','"+req.param("lastName")+"','"+req.param("email")+"','"+hashedPassword+"')";
+                   					var passwordToSave = bcrypt.hashSync(req.param("password"), salt);
+                   					var addUser= "INSERT INTO users(firstName,lastName,email,password) VALUES ('"+req.param("firstName")+"','"+req.param("lastName")+"','"+req.param("email")+"','"+passwordToSave+"')";
                    					console.log("query is"+addUser);
-                   					
 									mysql.addUser(function(err){
 									if(err)
 									{

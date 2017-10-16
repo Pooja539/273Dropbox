@@ -13,6 +13,7 @@ handleLogout(){
     render() {
         return (
             <div>
+            <img src={require('../userimage.jpg')} style={{width: 100, height: 100, alignment:"right"}}/>
             <button className="btn btn-primary" onClick= {()=>this.handleLogout()}>Logout</button>
         	</div>
 );

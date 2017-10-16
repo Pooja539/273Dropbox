@@ -42,6 +42,7 @@ app.use('/files',fileuploadroute);
 app.use('./uploads', express.static(path.join(__dirname, 'uploads/sal@yahoo.com')));
 app.post('/starfile',listfiles.starfile);
 app.post('/sharefile',listfiles.sharefile);
+app.post('/deletefile',listfiles.deletefile);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -4,7 +4,7 @@ export const userService = {
     login,
    logout,
     register,
-    //getuserdetails
+    getuserdetails
     /*getAll,
     getById,
     update,
@@ -42,14 +42,14 @@ function register(user) {
     return fetch('http://localhost:3001/register', requestOptions).then(handleResponse);
 }
 
-/*function getuserdetails()
+function getuserdetails()
 {
     fetch('http://localhost:3001/getuserdetails').then((response) => response.json()).then((responseJson) => {
        console.log(responseJson);
        return responseJson; 
 }
 )
-}*/
+}
 function logout() {
     history.push('/login');
 }

@@ -70,22 +70,7 @@ function register(user) {
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
-/*function listfiles()
-{
-            fileuploadservice.listfiles()
-            .then((reponseJson) => {
 
-               console.log("its Listfiles actions");
-               console.log(reponseJson);
-            },
-           
-            );
-
-    function request(responseJson) { return { type: userConstants.REGISTER_REQUEST, responseJson } }
-    function success(responseJson) { return { type: userConstants.REGISTER_SUCCESS, responseJson } }
-    function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
-
-}*/
 
 // prefixed function name with underscore because delete is a reserved word in javascript
 /*function _delete(id) {

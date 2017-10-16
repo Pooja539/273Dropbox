@@ -39,18 +39,18 @@ handleShare()
 render() {
 	const { sharing_email} = this.state;
         return (
-        	<div>
+        	<div style={{backgroundColor: '',width:1000,height:800}}>
             <div class="row">
             <div className="col-sm-6">
             <Navpage/>
             </div>
-            <div className="col-sm-6"> 
+            <div className="col-sm-4"> 
         	<h4> Share with: </h4>
         	<input type="email" placeholder="Enter email here" className="mm-popup__input" name="sharing_email" value={sharing_email} onChange={this.handleChange}/>
         	<h4> File to be shared: </h4><textarea value={this.props.sharedfilename}/> <br/>
         	<button className="btn btn-primary" onClick= {()=>this.handleShare()}>Share</button>
    			</div>
-            <div className =" col-sm-6">
+            <div className =" col-sm-2">
             <Logout/>
             </div>
             </div>

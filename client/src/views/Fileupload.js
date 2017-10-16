@@ -50,15 +50,15 @@ class Fileupload extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: 'powderblue',height:300}}>
+            <div style={{backgroundColor: '',width:1000,height:800}}>
                 
-             <div className="row" style={{backgroundColor: 'powderblue',width:700}}>
-                <div className="col-sm-5">
+             <div className="row" >
+                <div className="col-sm-6">
             <Navpage/>
             </div>
            
 
-                 <div className="col-sm-3">
+                 <div className="col-sm-4">
                 <h2> <b> Upload your files here </b></h2>
                 
                 <input
@@ -74,16 +74,18 @@ class Fileupload extends React.Component {
                         return ( <div>
                         <button className="btn btn-primary" onClick= {()=>this.handleStar(file)}><img src={require('../Star.png')}/></button> 
                         <DownloadLink filename={file} label= {file}/><button className="btn btn-primary" onClick= {()=>this.handleShare(file)}>Share</button>  
+<br/>
                                 <br/>
-                        </div>);
+                        </div>
+                        );
                     })
                     
                     : ''}
                 
               </div>
               </div>
-              <div className="col-sm-4">
-              <img src={require('../userimage.jpg')} style={{width: 100, height: 100, alignment:"right"}}/><br/>
+              <div className="col-sm-2">
+              
               <Logout/>
               </div>
 

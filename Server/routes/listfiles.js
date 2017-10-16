@@ -4,12 +4,12 @@ var testFolder = './uploads/';
 var mysql = require('./mysql');
 function listfiles(req,res)
 {
-	if(req.session.email == undefined){
+	/*if(req.session.email == undefined){
     console.log("You have not Logged in Yet");
     responseJson ='';
     res.send(JSON.stringify(responseJson));
   }
-  else{
+  else{*/
 				var response = "";
 				testFolder += req.session.email;
 				fs.readdir(testFolder, function (err, files) 
@@ -21,7 +21,7 @@ function listfiles(req,res)
 					res.setHeader('Content-Type', 'application/json');
 					res.send(JSON.stringify(responseJson));
 				});
-			}
+			//}
 }
  
 function starfile(req,res)
@@ -98,7 +98,28 @@ function sharefile(req,res)
 	}
 	},sharefilequery);
 }
+function deletefile(req,res)
+{
+	var fileName= req.param("file");
+	var deletefilequery = "DELETE FROM files WHERE fileName = '"+fileName+"'";
+	mysql.filesql(function(err)
+                   	{
+						if(err)
+						{
+							throw err;
+						}
+						else 
+						{
+							filepath = "./uploads/"+req.session.email+"/"+fileName;
+							console.log(filepath);
+							fs.unlinkSync(filepath);
+							listfiles();
+						}
+					},deletefilequery);	
+
+}
 
 exports.listfiles = listfiles;
 exports.starfile = starfile;
+exports.deletefile =deletefile;
 exports.sharefile= sharefile;
